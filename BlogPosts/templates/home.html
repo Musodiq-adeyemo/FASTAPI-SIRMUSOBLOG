@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    <title> Post Page</title>
+{% endblock %}
+
+{% block body %} 
+    <div class="bar-container1">
+        <br>
+        <h1 style="display: inline;color: navy;padding-left: 150px;">SIRMUSO BLOGSITE POSTS</h1>
+        <br>
+        <br>
+    </div>
+    {% for blog in blogs %}
+        <div class="general-container">
+            <div class="container-body">
+                <div style="margin-left: 110px;" class="post-container">
+                    <div  class="title-container">
+                        <img class="post-image" src="{{url_for('static',path='/admin.jpeg')}}" alt="post picture">
+                        <h1 style="font-weight:bold;color: navy;font-size: 30px;text-align: left;">{{blog.author}} </h1>
+                        <h1 class="date" style="font-weight:bold;color: navy;font-size: 30px;text-align:center;padding-left: 80px;padding-right: 120px;">{{blog.posted_at.strftime('%d-%m-%y')}} </h1>
+                        <h1 style="font-weight:bold;color: navy;font-size: 22px;padding-left:20px;"> Id : {{blog.id}} </h1>
+                    </div>
+                    <h2 style="color: green;font-weight:bold;font-size: 40px;"> {{blog.title}}</h2>
+                    <br>
+                    <p style="white-space: pre-wrap;font-size: 16px;text-align: left;">{{blog.content}}</p>
+                    <br>
+                    <br>
+                </div>
+                    
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

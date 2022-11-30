@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+  <title>Dashboard  Page</title>
+{% endblock %}
+
+{% block body %} 
+    <div class="bar-container1">
+        <h1 style="color: navy;"> Users Dashboard</h1>
+        <h3 style="color: blue;text-align: center;">Users Information</h3>
+    </div>
+    {% for user in users %}
+        <div class="general-container">
+            <div class="container-body">
+                <div style="margin-left: 120px;" class="post-container">
+                    <div class="dashflex">
+                        <div>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">USER ID: <span style="color: green;">{{user.id}}</span></h1>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">USERNAME: <span style="color: green;">{{user.username}}</span></h1>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">LASTNAME: <span style="color: green;">{{user.lastname}}</span></h1>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">FIRSTNAME: <span style="color: green;">{{user.firstname}}</span></h1>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">EMAIL: <span style="color: green;">{{user.email}}</span></h1>
+                            <h1 style="font-weight:bold;color: gray;font-size: 25px;text-align: left;padding-top: 10px;">Member Since: <span style="color: green;">{{user.created_at.strftime('%d-%m-%y')}}</span></h1>
+                            
+                        </div>
+                        <div>
+                            <img class="pp" style="margin-right:50px ;" src="{{url_for('static',path='/admin.jpeg')}}" alt="User picture">
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="table">
+        <h1 style="color: navy;"> Users List</h1>
+        <table>
+            <thead class="head">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Member Since</th>
+                </tr>
+            </thead>
+            <tbody class="body">
+                <tr class="group">
+                    {% for user in users %}
+                        <td>{{user.id}}</td>
+                        <td style="margin-left: -60px ;">{{user.username}}</td>
+                        <td style="margin-left: 0px ;">{{user.lastname}}</td>
+                        <td style="margin-left: 60px ;">{{user.firstname}}</td>
+                        <td >{{user.email}}</td>
+                        <td >{{user.created_at.strftime('%d-%m-%y')}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>    
+    </div>  
+     
+{% endblock %}
